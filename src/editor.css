@@ -1,0 +1,110 @@
+/*
+ * Quill's "snow" theme hard-codes a light palette (#ccc borders, #444 icons,
+ * white pickers). These overrides map it onto the app's theme tokens so the
+ * editor follows light/dark mode like the rest of the UI.
+ *
+ * `!important` is used on icon strokes/fills because the vendor rules for
+ * hover/active states are more specific than ours; without it the hard-coded
+ * greys win.
+ */
+
+.ql-container.ql-snow {
+  border-color: var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  /* Quill hard-codes Helvetica/13px; inherit the app's system-ui stack instead. */
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.ql-toolbar.ql-snow {
+  border-color: var(--border);
+  background: var(--bg-elev);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.ql-snow .ql-editor {
+  color: var(--fg);
+  min-height: 8rem;
+}
+
+.ql-snow .ql-editor img {
+  max-width: 100%;
+  height: auto;
+}
+
+.ql-snow .ql-editor.ql-blank::before {
+  color: var(--muted);
+}
+
+/* Toolbar icons */
+.ql-snow .ql-stroke,
+.ql-snow .ql-stroke-miter {
+  stroke: var(--fg) !important;
+}
+
+.ql-snow .ql-fill,
+.ql-snow .ql-stroke.ql-fill {
+  fill: var(--fg) !important;
+}
+
+.ql-snow .ql-picker {
+  color: var(--fg);
+}
+
+.ql-snow .ql-picker-options {
+  background-color: var(--bg-elev);
+  border-color: var(--border) !important;
+}
+
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label,
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+  border-color: var(--border);
+}
+
+.ql-snow .ql-picker.ql-expanded .ql-picker-label {
+  color: var(--muted);
+}
+
+/* Hover / active affordances keep using the accent colour */
+.ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke,
+.ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke,
+.ql-snow .ql-toolbar button.ql-active .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke {
+  stroke: var(--accent) !important;
+}
+
+.ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-fill,
+.ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-fill,
+.ql-snow.ql-toolbar button.ql-active .ql-fill,
+.ql-snow .ql-toolbar button.ql-active .ql-fill {
+  fill: var(--accent) !important;
+}
+
+.ql-snow.ql-toolbar button:hover:not(.ql-active),
+.ql-snow .ql-toolbar button:hover:not(.ql-active),
+.ql-snow.ql-toolbar button.ql-active,
+.ql-snow .ql-toolbar button.ql-active {
+  color: var(--accent);
+}
+
+/* Link tooltip */
+.ql-snow .ql-tooltip {
+  background-color: var(--bg-elev);
+  border-color: var(--border);
+  color: var(--fg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.ql-snow .ql-tooltip input[type="text"] {
+  border-color: var(--border);
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+/* Blockquote / code keep legible in dark mode */
+.ql-snow .ql-editor blockquote {
+  border-left-color: var(--border);
+}
