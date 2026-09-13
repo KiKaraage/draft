@@ -10,7 +10,8 @@
     "prepare": "vp config"
   },
   "dependencies": {
-    "browser-image-compression": "^2.0.2"
+    "browser-image-compression": "^2.0.2",
+    "quill": "^2.0.3"
   },
   "devDependencies": {
     "typescript": "~6.0.2",
