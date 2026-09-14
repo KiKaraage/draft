@@ -257,6 +257,24 @@ a.crumb:hover {
   margin-top: 0.5rem;
 }
 
+.cell--answer {
+  max-width: 10rem;
+  overflow-wrap: break-word;
+}
+
+.cell--answer p,
+.cell--answer ol,
+.cell--answer ul,
+.cell--answer li {
+  display: inline;
+  margin: 0;
+}
+
+.cell--answer img {
+  max-width: 100%;
+  height: auto;
+}
+
 .answers {
   margin: 0;
   padding-left: 0;
