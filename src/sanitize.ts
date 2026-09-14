@@ -51,11 +51,12 @@ const ALLOWED_ATTR = [
  * DOM or the editor. `data:` URLs are allowed so embedded images survive.
  */
 export function sanitizeHtml(html: string): string {
-  return DOMPurify.sanitize(html ?? "", {
+  const clean = DOMPurify.sanitize(html ?? "", {
     ALLOWED_TAGS,
     ALLOWED_ATTR,
     ALLOW_DATA_ATTR: false,
     // Allow inline data: images but nothing else script-adjacent.
     ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto|tel|data):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
   });
+  return clean.replace(/&nbsp;|\u00a0/g, " ");
 }
