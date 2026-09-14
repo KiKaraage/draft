@@ -58,5 +58,5 @@ export function sanitizeHtml(html: string): string {
     // Allow inline data: images but nothing else script-adjacent.
     ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto|tel|data):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
   });
-  return clean.replace(/&nbsp;|\u00a0/g, " ");
+  return clean;
 }

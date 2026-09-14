@@ -82,7 +82,9 @@ export class SoalEditor {
 
   /** Current content as semantic HTML. */
   get html(): string {
-    return this.quill.getSemanticHTML().replace(/&nbsp;/g, " ");
+    return this.quill
+      .getSemanticHTML()
+      .replace(/(&nbsp;)+/g, (run) => (run.length > "&nbsp;".length ? run : " "));
   }
 
   set html(value: string) {
